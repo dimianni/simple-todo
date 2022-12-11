@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.Container{
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.NoteList{
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  width: max-content;
+  margin: 0 auto;
+}
+
+.Form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.Note{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Content{
+  width: 60%;
+}
+
+.CreatedBy{
+  width: 15%;
+}
+
+.Date{
+  width: 15%;
+}

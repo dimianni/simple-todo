@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import Form from './Components/Form'
+import NoteList from './Components/NoteList'
 
 function App() {
+
+  const [query, setQuery] = useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='Container'>
+      <h1>To-do List</h1>
+      <div className="Form">
+        <Form setQuery={setQuery} />
+      </div>
+      <div className="NoteList">
+        <NoteList query={query} />
+      </div>
+    </main>
   );
 }
 
