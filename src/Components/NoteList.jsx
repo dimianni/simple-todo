@@ -1,11 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import Note from './Note'
 
 const NoteList = ({ query }) => {
-
-    // We can use the useRef hook to store any mutable value we like
-    // so we could use that to keep track of if it's the first time the useEffect function is being run.
-    const isMounted = useRef(false);
 
     const [notes, setNotes] = useState([
         {
@@ -31,26 +27,19 @@ const NoteList = ({ query }) => {
     const [itemToDelete, setItemToDelete] = useState()
 
     useEffect(() => {
-        if (isMounted.current) {
-            if (query !== '') {
-                setNotes(prevNotes => [...prevNotes, query])
-            }
-            // console.log(notes); // 3 
-        } 
-        // Do not update the state on mount
-        else {
-            isMounted.current = true;
-            // console.log(notes); // 2
+        if (query !== '') {
+            setNotes(prevNotes => [...prevNotes, query])
+            localStorage.setItem('notelist', JSON.stringify(notes))
         }
     }, [query]);
-
-    // console.log(notes); // 1 // 4
 
     useEffect(() => {
         setNotes(prevNotes => {
             return prevNotes.filter(obj => obj.id !== itemToDelete)
         })
+        localStorage.setItem('notelist', JSON.stringify(notes))
     }, [itemToDelete])
+
 
     return (
         notes?.map(note => {
